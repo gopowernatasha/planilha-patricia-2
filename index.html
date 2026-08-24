@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Consultoria Premium · Natasha Moraes</title>
+<meta name="description" content="Planilha de treino da Consultoria Premium com a treinadora Natasha Moraes.">
+<meta name="theme-color" content="#FBF9FE">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%237B52E1'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="Consultoria Premium">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+html{-webkit-text-size-adjust:100%}
+html,body{margin:0;padding:0;background:#FBF9FE;color:#211833;font-family:'Manrope',sans-serif;-webkit-tap-highlight-color:transparent;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:#5B36C4}a:hover{color:#7B52E1}
+button{touch-action:manipulation}
+#cp-tabs{display:flex;gap:8px;overflow-x:auto;padding:6px 18px 8px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 22px,#000 calc(100% - 22px),transparent);mask-image:linear-gradient(90deg,transparent,#000 22px,#000 calc(100% - 22px),transparent)}
+#cp-tabs::-webkit-scrollbar{display:none}
+.cp-tab{flex:none;position:relative;overflow:hidden;padding:12px 18px;border-radius:999px;font-family:'Manrope',sans-serif;font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap;min-height:44px;transition:all .18s ease;border:1px solid #E4DAF8;background:#FFFFFF;color:#6E6288}
+.cp-tab.active{border:1px solid transparent;background:linear-gradient(105deg,rgba(255,255,255,.28),transparent 45%),linear-gradient(115deg,#5B36C4,#7B52E1 55%,#A88BEF 135%);color:#FFFFFF;box-shadow:0 8px 20px -8px rgba(91,54,196,.55)}
+.cp-tab-pearl{position:absolute;top:6px;right:8px;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFC9A3,#FF7A1A)}
+.cp-sub-row{padding:16px 0;border-top:1px solid #F0EAFB}
+.cp-sub-row:first-of-type{border-top:0}
+.cp-cat{font-family:'Fraunces',serif;font-weight:600;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#5B36C4}
+.cp-dayname{font-family:'Fraunces',serif;font-weight:600;font-size:30px;margin:6px 0 16px;color:#211833}
+.cp-track{flex:1;height:6px;background:#F0EAFB;border-radius:999px;position:relative}
+.cp-fill{position:absolute;left:0;top:0;bottom:0;border-radius:999px;transition:width .4s cubic-bezier(.4,0,.2,1);background:#7B52E1}
+.cp-fill.full{background:linear-gradient(90deg,#7B52E1,#FFC9A3 55%,#FF7A1A)}
+.cp-tip{position:absolute;right:-3px;top:50%;transform:translateY(-50%);width:13px;height:13px;border-radius:50%;background:#FFFFFF;box-shadow:0 1px 5px rgba(33,24,51,.3)}
+.cp-count{font-size:12px;color:#6E6288;font-weight:800;font-variant-numeric:tabular-nums;flex:none}
+.cp-clear{flex:none;background:transparent;border:none;font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:8px 4px;color:#6E6288}
+.cp-clear.warn{color:#B24E15}
+.cp-impec{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:15px;color:#5B36C4;margin:12px 2px 0}
+.cp-card{position:relative;overflow:hidden;background:#FFFFFF;border:1px solid #E4DAF8;border-radius:20px;padding:16px;margin-bottom:14px;box-shadow:0 1px 2px rgba(33,24,51,.04),0 18px 42px -22px rgba(91,54,196,.28)}
+.cp-card-top{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#7B52E1,#FFC9A3 55%,#FF7A1A)}
+.cp-content{transition:opacity .25s ease}
+.cp-content.off{opacity:.55}
+.cp-num{font-family:'Fraunces',serif;font-weight:600;font-size:28px;line-height:1.1;color:#7B52E1;min-width:42px;flex:none}
+.cp-exname{flex:1;font-weight:700;font-size:17px;line-height:1.3;color:#211833;padding-top:5px}
+.cp-check{flex:none;width:44px;height:44px;margin:-4px -6px 0 0;border:none;background:transparent;padding:0;cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center}
+.cp-circle{width:31px;height:31px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .2s ease;background:#FFFFFF;border:1.5px solid #E4DAF8}
+.cp-circle svg{width:15px;height:15px;opacity:0;transition:opacity .15s ease}
+.cp-circle.on{background:linear-gradient(135deg,#7B52E1,#A88BEF);border:1.5px solid transparent;box-shadow:0 4px 12px -4px rgba(123,82,225,.6)}
+.cp-circle.on svg{opacity:1}
+.cp-scheme{font-size:15px;font-weight:700;color:#211833;line-height:1.65;margin-top:8px;white-space:pre-line}
+.cp-scheme .carga{color:#5B36C4;font-weight:800}
+.cp-note{position:relative;margin-top:12px;background:#F8F5FE;border-radius:0 12px 12px 0;padding:11px 14px 11px 17px;overflow:hidden}
+.cp-note-bar{position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#7B52E1,#FFC9A3)}
+.cp-note-q{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:22px;line-height:0;color:#A88BEF;vertical-align:-6px;margin-right:3px}
+.cp-note-t{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:15px;line-height:1.55;color:#211833}
+.cp-loadwrap{display:flex;align-items:center;gap:10px;margin-top:14px;background:#F0EAFB;border:1px solid #E4DAF8;border-radius:12px;padding:11px 14px;cursor:text;min-height:44px}
+.cp-loadtag{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#6E6288;flex:none}
+.cp-load{flex:1;background:transparent;border:none;outline:none;color:#5B36C4;font-weight:700;font-size:16px;text-align:right;min-width:0;font-family:'Manrope',sans-serif}
+.cp-load::placeholder{color:#A99DC4;font-weight:600}
+.cp-last{font-size:12.5px;color:#6E6288;margin-top:7px;padding-left:2px;font-weight:600}
+.cp-last b{color:#5B36C4}
+.cp-last i{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:#5B36C4}
+.cp-actions{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.cp-rest-chip{display:inline-flex;align-items:center;gap:7px;background:#FFF1E7;border:none;color:#B24E15;font-weight:700;font-size:12.5px;font-family:'Manrope',sans-serif;padding:12px 16px;border-radius:999px;cursor:pointer;min-height:44px;white-space:nowrap}
+.cp-videos{display:flex;flex-wrap:wrap;gap:8px}
+.cp-video-btn{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(115deg,#5B36C4,#7B52E1 60%,#A88BEF 130%);border:none;color:#FFFFFF;font-weight:800;font-size:12.5px;font-family:'Manrope',sans-serif;padding:11px 17px 11px 11px;border-radius:999px;cursor:pointer;min-height:44px;box-shadow:0 8px 18px -7px rgba(91,54,196,.6)}
+.cp-video-soon{display:inline-flex;align-items:center;gap:9px;background:#F0EAFB;border:1px solid #E4DAF8;color:#5B36C4;font-weight:700;font-size:12.5px;padding:11px 17px 11px 11px;border-radius:999px;min-height:44px}
+.cp-disc{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none}
+.cp-disc.lite{background:rgba(255,255,255,.22)}
+.cp-disc.grad{background:linear-gradient(135deg,#7B52E1,#A88BEF)}
+.cp-overlay{position:fixed;inset:0;z-index:120;background:rgba(33,24,51,.78);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:24px}
+.cp-overlay.video{z-index:110;background:rgba(33,24,51,.88);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);padding:20px}
+.cp-rest-panel{background:#FFFFFF;border-radius:28px;padding:28px 24px 22px;width:100%;max-width:330px;text-align:center;box-shadow:0 34px 80px -28px rgba(33,24,51,.55)}
+.cp-rest-title{font-family:'Fraunces',serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:#5B36C4;margin-bottom:18px}
+.cp-ringwrap{position:relative;width:210px;height:210px;margin:0 auto 18px}
+.cp-ringwrap svg{width:100%;height:100%;transform:rotate(-90deg)}
+#rest-ring{fill:none;stroke-width:8;stroke-linecap:round;stroke-dasharray:326.73;transition:stroke-dashoffset .3s linear}
+.cp-time{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:48px;color:#211833;font-variant-numeric:tabular-nums}
+.cp-photo{position:absolute;inset:9px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 4px rgba(255,122,26,.4),0 12px 34px -8px rgba(91,54,196,.6)}
+.cp-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.cp-scrim{position:absolute;inset:0;background:radial-gradient(circle at 50% 40%, transparent 55%, rgba(33,24,51,.4) 100%)}
+.cp-phrase{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:15px;color:#6E6288;margin:-4px 0 16px}
+.cp-add15{width:100%;background:#B24E15;color:#fff;border:none;border-radius:14px;padding:15px;font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;cursor:pointer;margin-bottom:10px}
+.cp-rest-row{display:flex;gap:10px}
+.cp-btn-solid{flex:1;background:#7B52E1;border:none;color:#fff;font-family:'Manrope',sans-serif;font-weight:700;font-size:14px;padding:13px;border-radius:13px;cursor:pointer;box-shadow:0 6px 16px -6px rgba(123,82,225,.5)}
+.cp-btn-solid.big{font-weight:800;font-size:15px}
+.cp-btn-ghost{flex:1;background:transparent;border:1px solid #E4DAF8;color:#6E6288;font-family:'Manrope',sans-serif;font-weight:700;font-size:14px;padding:13px;border-radius:13px;cursor:pointer}
+.cp-video-box{width:100%;max-width:480px}
+.cp-video-close-row{display:flex;justify-content:flex-end;margin-bottom:12px}
+#video-close{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.cp-video-frame{position:relative;width:100%;padding-top:56.25%;background:#211833;border-radius:18px;overflow:hidden}
+.cp-video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+[hidden]{display:none!important}
+@keyframes cpSweep{from{transform:translateX(-130%)}to{transform:translateX(130%)}}
+.cp-sweep{position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.75) 48%,rgba(255,201,163,.35) 58%,transparent 75%);transform:translateX(-130%);animation:cpSweep .65s ease-out forwards}
+@keyframes cpStar{0%{transform:scale(.2) rotate(-40deg);opacity:0}45%{transform:scale(1.3) rotate(0deg);opacity:1}100%{transform:scale(.4);opacity:0}}
+.cp-star{position:absolute;top:-2px;right:-2px;font-size:16px;line-height:1;color:#FFC9A3;pointer-events:none;animation:cpStar .45s ease-out forwards}
+@keyframes cpPulse{0%{transform:scale(.82);opacity:.3}60%{transform:scale(1.07)}100%{transform:scale(1);opacity:1}}
+.cp-pulse{animation:cpPulse .55s cubic-bezier(.34,1.56,.64,1)}
+@keyframes cpFadeOut{from{opacity:.55}to{opacity:0}}
+@media (min-width:900px){
+  #cp-wrap{max-width:1080px!important}
+  #cp-wrap>*:not(#cp-head){max-width:560px;margin-left:auto;margin-right:auto}
+  #cp-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);column-gap:56px;align-items:start;text-align:left!important;padding:40px 34px 14px!important}
+  #cp-head>*{grid-column:1}
+  #cp-head>div:first-child{justify-content:flex-start!important}
+  #cp-tips{margin:0!important}
+  #cp-orient{grid-column:2;grid-row:1/5;margin:0!important;max-width:none!important}
+  #cp-hr{grid-column:1/-1;max-width:none!important;margin:26px 0 0!important}
+}
+@media (prefers-reduced-motion: reduce){
+  .cp-sweep{transform:none;animation:cpFadeOut .45s ease forwards}
+  .cp-pulse,.cp-star{animation:none}
+}
+</style>
+</head>
+<body>
+<div style="position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(70% 45% at 12% -2%, rgba(168,139,239,.22), transparent 60%),radial-gradient(62% 42% at 100% 8%, rgba(255,201,163,.24), transparent 58%),radial-gradient(60% 44% at -5% 42%, rgba(255,201,163,.16), transparent 60%),radial-gradient(66% 46% at 104% 58%, rgba(168,139,239,.19), transparent 60%),radial-gradient(72% 48% at 20% 92%, rgba(168,139,239,.16), transparent 62%),radial-gradient(64% 44% at 98% 100%, rgba(255,201,163,.15), transparent 60%),linear-gradient(180deg, #FDFBFF 0%, #F6F1FC 46%, #FBF4FB 100%)"></div>
+<div style="position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 42%, transparent 58%, rgba(91,54,196,.06) 100%)"></div>
+<div id="cp-wrap" style="position:relative;z-index:1;max-width:520px;margin:0 auto;padding-bottom:56px">
+
+  <div id="cp-aviso-icone" hidden style="margin:18px 18px 0;background:#FFFFFF;border:1px solid #E4DAF8;border-radius:20px;padding:16px;box-shadow:0 1px 2px rgba(33,24,51,.04),0 18px 42px -22px rgba(91,54,196,.28);position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#7B52E1,#FFC9A3 55%,#FF7A1A)"></div>
+    <div style="display:flex;gap:13px;align-items:flex-start">
+      <img src="apple-touch-icon.png" alt="" style="width:46px;height:46px;border-radius:11px;flex:none;box-shadow:0 4px 10px -2px rgba(91,54,196,.35)">
+      <div style="flex:1;min-width:0">
+        <div style="font-weight:800;font-size:14.5px;color:#211833;margin-bottom:4px">Sua planilha ganhou um ícone novo 💜</div>
+        <div style="font-size:13px;line-height:1.55;color:#6E6288;font-weight:600">Pra ele aparecer na sua tela de início: <b style="color:#5B36C4">1.</b> segure o dedo no atalho antigo e toque em <b style="color:#5B36C4">Excluir Favorito</b>; <b style="color:#5B36C4">2.</b> abra este link no Safari, toque em <b style="color:#5B36C4">Compartilhar</b> e depois em <b style="color:#5B36C4">Adicionar à Tela de Início</b>.</div>
+        <div style="display:flex;gap:16px;align-items:center;margin-top:12px">
+          <button id="cp-aviso-ok" style="border:none;cursor:pointer;font-family:'Manrope',sans-serif;font-weight:800;font-size:12.5px;color:#FFFFFF;padding:10px 16px;border-radius:999px;background:linear-gradient(115deg,#5B36C4,#7B52E1 55%,#A88BEF 135%);box-shadow:0 8px 20px -8px rgba(91,54,196,.55)">Pronto, já troquei ✨</button>
+          <button id="cp-aviso-depois" style="border:none;background:transparent;cursor:pointer;font-family:'Manrope',sans-serif;font-weight:700;font-size:12.5px;color:#6E6288;text-decoration:underline;text-underline-offset:3px;padding:8px 0">Depois</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  (function(){
+    var el=document.getElementById('cp-aviso-icone');
+    try{
+      var ios=/iPhone|iPad|iPod/.test(navigator.userAgent);
+      if(ios && new Date()<new Date('2026-09-01') && localStorage.getItem('cp-aviso-icone')!=='ok' && sessionStorage.getItem('cp-aviso-icone')!=='depois'){ el.hidden=false; }
+      document.getElementById('cp-aviso-ok').onclick=function(){ try{localStorage.setItem('cp-aviso-icone','ok');}catch(e){} el.hidden=true; };
+      document.getElementById('cp-aviso-depois').onclick=function(){ try{sessionStorage.setItem('cp-aviso-icone','depois');}catch(e){} el.hidden=true; };
+    }catch(e){}
+  })();
+  </script>
+
+  <div id="cp-head" style="padding:48px 24px 26px;text-align:center">
+    <div style="display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:16px">
+      <span style="height:1px;flex:1;max-width:64px;background:linear-gradient(90deg,transparent,#A88BEF)"></span>
+      <span style="font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#6E6288;white-space:nowrap">Treinadora Natasha Moraes</span>
+      <span style="height:1px;flex:1;max-width:64px;background:linear-gradient(90deg,#FFC9A3,transparent)"></span>
+    </div>
+    <h1 style="font-family:'Fraunces',serif;font-weight:600;font-size:44px;line-height:1.02;margin:0 0 10px;text-wrap:balance;background:linear-gradient(105deg,#5B36C4 0%,#7B52E1 38%,#C750A0 66%,#D8763F 92%);-webkit-background-clip:text;background-clip:text;color:transparent">Consultoria Premium</h1>
+    <div id="cp-greet" style="font-size:12.5px;font-weight:700;color:#6E6288;margin-bottom:24px;letter-spacing:.04em">Planilha 2 · feita pra Patrícia Simas</div>
+    <div id="cp-tips" style="display:flex;flex-direction:column;gap:10px;max-width:400px;margin:0 auto 24px">
+      <div style="display:flex;align-items:center;gap:11px;text-align:left;background:#F0EAFB;border-radius:14px;padding:12px 15px;font-size:12.5px;line-height:1.5;color:#6E6288;font-weight:600">
+        <span style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#7B52E1,#C750A0);display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 0 0 4px rgba(168,139,239,.16)"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>
+        <span>Toque em <b style="color:#5B36C4">Ver vídeo</b> pra assistir o movimento antes da série</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:11px;text-align:left;background:#F0EAFB;border-radius:14px;padding:12px 15px;font-size:12.5px;line-height:1.5;color:#6E6288;font-weight:600">
+        <span style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#7B52E1,#A88BEF);display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 0 0 4px rgba(168,139,239,.16)"><svg viewBox="0 0 14 14" style="width:13px;height:13px;fill:none"><circle cx="7" cy="8" r="5" stroke="#fff" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#fff" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#fff" stroke-width="1.4" stroke-linecap="round"></path></svg></span>
+        <span>Toque no chip de <b style="color:#5B36C4">Descanso</b> pra eu cronometrar por você</span>
+      </div>
+    </div>
+    <div id="cp-orient" style="position:relative;text-align:left;background:#FFFFFF;border:1px solid #E4DAF8;border-radius:18px;padding:18px 18px 18px 23px;max-width:420px;margin:0 auto;overflow:hidden;box-shadow:0 1px 2px rgba(33,24,51,.04),0 18px 42px -22px rgba(91,54,196,.28)">
+      <span style="position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#7B52E1,#FFC9A3)"></span>
+      <div style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#5B36C4;margin-bottom:13px">Orientações importantes</div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;gap:11px"><span style="width:8px;height:8px;border-radius:50%;flex:none;margin-top:7px;background:radial-gradient(circle at 35% 30%,#FFC9A3,#FF7A1A)"></span><span class="cp-note-t">Aumente a carga sempre que sentir que o peso está leve para cumprir as repetições propostas, sempre mantendo a execução correta.</span></div>
+        <div style="display:flex;gap:11px"><span style="width:8px;height:8px;border-radius:50%;flex:none;margin-top:7px;background:radial-gradient(circle at 35% 30%,#FFC9A3,#FF7A1A)"></span><span class="cp-note-t">Antes de pensar em aumentar a carga, fortaleça a base dos movimentos. Uma boa técnica sempre vem primeiro.</span></div>
+        <div style="display:flex;gap:11px"><span style="width:8px;height:8px;border-radius:50%;flex:none;margin-top:7px;background:radial-gradient(circle at 35% 30%,#FFC9A3,#FF7A1A)"></span><span class="cp-note-t">O tempo de descanso indicado na planilha é apenas uma referência. Se precisar de mais tempo para recuperar, descanse um pouco mais. O importante é iniciar a próxima série quando estiver em condições de executá-la com qualidade. Descanse o necessário, mas volte para a próxima série com foco.</span></div>
+        <div style="display:flex;gap:11px"><span style="width:8px;height:8px;border-radius:50%;flex:none;margin-top:7px;background:radial-gradient(circle at 35% 30%,#FFC9A3,#FF7A1A)"></span><span class="cp-note-t">Anote as cargas utilizadas na planilha. Assim, conseguirei acompanhar sua evolução e montar os próximos treinos de acordo com o seu progresso.</span></div>
+        <div style="display:flex;gap:11px"><span style="width:8px;height:8px;border-radius:50%;flex:none;margin-top:7px;background:radial-gradient(circle at 35% 30%,#FFC9A3,#FF7A1A)"></span><span class="cp-note-t">Em caso de dúvidas, <span id="cp-wa">me chame no WhatsApp</span>. Estou aqui para te ajudar.</span></div>
+      </div>
+    </div>
+    <div id="cp-hr" style="display:flex;align-items:center;gap:10px;max-width:420px;margin:28px auto 0">
+      <span style="height:1px;flex:1;background:linear-gradient(90deg,transparent,#E4DAF8)"></span>
+      <span style="width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFC9A3,#D8763F)"></span>
+      <span style="height:1px;flex:1;background:linear-gradient(90deg,#E4DAF8,transparent)"></span>
+    </div>
+  </div>
+
+  
+
+  <div id="cp-static">
+<div style="text-align:center;font-size:11.5px;color:#6E6288;font-weight:600;padding:2px 24px 0">Pra marcar exercício feito, salvar cargas e cronometrar o descanso, abra esta página no Safari ou Chrome</div>
+<div style="padding:4px 18px 0">
+<div style="padding:22px 4px 8px"><div class="cp-cat">Quadríceps, Posterior e Panturrilha</div><h2 class="cp-dayname">Segunda</h2></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">01.</span><div class="cp-exname">MOBILIDADE DE INFERIORES</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">Assista o vídeo</div><div class="cp-actions"><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=6d909c60-5370-4e63-af46-a8a2d8c52144" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">02.</span><div class="cp-exname">Cadeira Extensora unilateral + Passadas com carga ou sem</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">1x15 + 15 passadas
+1x12 + 12 passadas
+2x10 + 10 passadas</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=2a287e97-1a09-4714-85c4-3ec8d8b907ad" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 1</a><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=7f5724b4-0a3d-4965-af77-bb63fc4db303" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 2</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">03.</span><div class="cp-exname">Leg 45</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme"><span class="carga">CARGA LEVE</span> - 1x15 + 15 parciais
+<span class="carga">CARGA MODERADA</span> - 1x12 + 12 parciais
+<span class="carga">CARGA PESADA</span> - 2x10 + 10 parciais</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=b6df13e9-4184-4fc5-88f9-5685b77d0c5e" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">04.</span><div class="cp-exname">Agachamento barra baixa</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme"><span class="carga">CARGA MODERADA</span> - 1x12 a 15
+<span class="carga">CARGA PESADA</span> - 2x8 a 10</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=5da872e4-4aa5-4390-be8c-747b3b842140" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">05.</span><div class="cp-exname">Cadeira adutora</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">4x15 segurando 2&#x27;&#x27; com a perna aberta</div><div class="cp-note"><span class="cp-note-bar"></span><span class="cp-note-q">“</span><span class="cp-note-t">Alongando bem a parte interna da coxa, não deixe ficar encurtada.</span></div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 40&#x27;&#x27; a 1min</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=321cfac5-8048-4a47-abdf-f13ef9846b44" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">06.</span><div class="cp-exname">Cadeira Flexora</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme"><span class="carga">CARGA LEVE</span> - 1x12 a 15
+<span class="carga">CARGA PESADA</span> - 1x8 a 10
+<span class="carga">CARGA LEVE</span> - 1x12 a 15
+<span class="carga">CARGA PESADA</span> - 1x8 a 10
+1x DROP - 6 (diminui a carga) + 8 (diminui a carga) + 10</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=763deaea-d8b6-4234-b68f-53c79ebe9800" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">07.</span><div class="cp-exname">Flexão de quadril na máquina ou com caneleira</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">4x10 + 10 parciais em cima</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 40&#x27;&#x27; a 1min</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=d265a9c6-51cc-4f30-9bea-71df6b080c3e" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">08.</span><div class="cp-exname">Panturrilha no Leg 45</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">3x20 segurando 2&#x27;&#x27; em baixo com a panturrilha alongada</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 40&#x27;&#x27; a 1min</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=145c23db-1036-4a3d-ac5e-46882a5b63b7" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div style="padding:22px 4px 8px"><div class="cp-cat">Costas, Bíceps, ABS e Cardio</div><h2 class="cp-dayname">Terça</h2></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">01.</span><div class="cp-exname">MOBILIDADE DE SUPERIORES</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">Assista o vídeo</div><div class="cp-actions"><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=a3743f64-fbbe-417e-8d5b-2e5ee2731972" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">02.</span><div class="cp-exname">Puxada com triângulo + Bíceps HBL</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme"><span class="carga">CARGA LEVE</span> - 1x15 + 8 a 10
+<span class="carga">CARGA MODERADA</span> - 1x12 + 8 a 10
+<span class="carga">CARGA PESADA</span> - 2x10 + 8 a 10</div><div class="cp-note"><span class="cp-note-bar"></span><span class="cp-note-q">“</span><span class="cp-note-t">A carga para fazer o bíceps mantém a mesma, só aumenta se sentir que está muito leve.</span></div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=b4b3f258-d5a1-42af-8043-fcce41b5d5cf" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 1</a><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=1dad1ea6-bdc6-4ee1-b396-6974b7e64222" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 2</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">03.</span><div class="cp-exname">Pull down + Bíceps martelo</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">3x6 (diminui a carga) + 12
+E faz 10 a 12 do bíceps</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=22d05b7d-af94-4443-b9fe-1406066deff1" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 1</a><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=2be13feb-ca80-4d33-9e50-1c304c77883e" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 2</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">04.</span><div class="cp-exname">Remada sentada aberta + Remada curvada pegada neutra com halter</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme"><span class="carga">CARGA LEVE</span> - 1x12 a 15 + máx próximo a falha da remada com halter
+<span class="carga">CARGA PESADA</span> - 1x8 a 10 + máx próximo a falha da remada com halter
+<span class="carga">CARGA LEVE</span> - 1x12 a 15 + máx próximo a falha da remada com halter
+<span class="carga">CARGA PESADA</span> - 1x8 a 10 + máx próximo a falha da remada com halter</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=da87f970-521f-4248-b87d-1637b7154d84" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 1</a><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=c47622d3-538f-4ae8-9d4d-5bb4c5bbe666" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 2</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">05.</span><div class="cp-exname">Serrote na polia</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">3x10 a 12</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 40&#x27;&#x27; a 1min</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=b260e416-b8e5-4b4e-b30b-12bb5ad43c06" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">06.</span><div class="cp-exname">Bíceps unilateral na polia</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">3x6 a 8 ou o máximo que conseguir</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 40&#x27;&#x27; a 1min</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=f19ff542-06c8-4055-851d-f14a376322a9" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">07.</span><div class="cp-exname">CIRCUITO DE ABS DIÁSTASE</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">Assista o vídeo</div><div class="cp-actions"><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=0ef3f53e-4a70-4bf2-b711-ae215d224728" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">08.</span><div class="cp-exname">Cardio</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">Bike, escada ou caminhada pós treino
+No mínimo 30 minutos.</div><div class="cp-actions"><div class="cp-videos"><span class="cp-video-soon"><span class="cp-disc grad"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Vídeo em breve</span></div></div></div></div>
+<div style="padding:22px 4px 8px"><div class="cp-cat">Glúteo e Posterior</div><h2 class="cp-dayname">Quarta</h2></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">01.</span><div class="cp-exname">MOBILIDADE DE INFERIORES</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">Assista o vídeo</div><div class="cp-actions"><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=6d909c60-5370-4e63-af46-a8a2d8c52144" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">02.</span><div class="cp-exname">Cadeira Abdutora</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme"><span class="carga">CARGA LEVE</span> - 1x15 segurando 2&#x27;&#x27; com a perna aberta + 15 ou o máximo que conseguir direto
+<span class="carga">CARGA MEDIANA</span> - 1x12 segurando 2&#x27;&#x27; com a perna aberta + 12 ou o máximo que conseguir direto
+<span class="carga">CARGA PESADA</span> - 2x10 segurando 2&#x27;&#x27; com a perna aberta + 10 ou o máximo que conseguir direto</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=a8a0ae28-50d0-4565-a498-0a1e82e7adc5" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">03.</span><div class="cp-exname">Búlgaro com halter</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">3x10 a 12
+1x10 + 10 sem carga</div><div class="cp-note"><span class="cp-note-bar"></span><span class="cp-note-q">“</span><span class="cp-note-t">Subindo a carga sempre que sentir que está leve.</span></div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=c5fb08de-0312-49eb-8ed2-1eaf6288db1c" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">04.</span><div class="cp-exname">RDL com a barra</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme"><span class="carga">CARGA MEDIANA</span> - 2x10 a 12
+<span class="carga">CARGA PESADA</span> - 1x6 a 8</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=92a797fc-3475-4109-8e19-6370fdb696aa" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">05.</span><div class="cp-exname">Extensão de quadril na polia ou com caneleira</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">1x15
+1x12
+2x10</div><div class="cp-note"><span class="cp-note-bar"></span><span class="cp-note-q">“</span><span class="cp-note-t">Subindo a carga em cada série.</span></div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=d8f3d810-b4e9-430e-baa9-457fefd9d9c7" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">06.</span><div class="cp-exname">Mesa flexora</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">3x6 (diminui a carga) + 12</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=97a4298b-32e0-4b62-9471-57f6d363accd" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">07.</span><div class="cp-exname">Flexão de quadril na máquina ou com caneleira</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">3x10 + 10 parciais em cima</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 40&#x27;&#x27; a 1min</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=d265a9c6-51cc-4f30-9bea-71df6b080c3e" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div style="padding:22px 4px 8px"><div class="cp-cat">Peito, Tríceps, Ombro e Cardio</div><h2 class="cp-dayname">Quinta</h2></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">01.</span><div class="cp-exname">MOBILIDADE DE SUPERIORES</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">Assista o vídeo</div><div class="cp-actions"><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=a3743f64-fbbe-417e-8d5b-2e5ee2731972" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">02.</span><div class="cp-exname">Voador peitoral + Tríceps francês com halter</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">1x15 + 15
+1x12 + 12
+2x10 + 10</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 40&#x27;&#x27; a 1min</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=a931fcf8-e070-41d3-a161-698c3350d774" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 1</a><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=7d88ba15-0cca-49c7-94a9-10c8420644d7" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 2</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">03.</span><div class="cp-exname">Supino reto com a barra + Supino neutro com halter</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">3x10 + 10</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 40&#x27;&#x27; a 1min</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=8fab046d-0a76-40c5-8271-42aedccb1aab" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 1</a><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=48dc984b-cb2e-4e52-9d12-724c933fde65" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 2</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">04.</span><div class="cp-exname">Tríceps corda</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">3x6 (diminui a carga) + 6 (diminui a carga) + 6</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 40&#x27;&#x27; a 1min</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=a2fd5542-9e35-4e63-9bc7-0818cf53ac54" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">05.</span><div class="cp-exname">Tríceps testa com halter + Elevação lateral com halter</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">4x10 a 12
++ 10 a 12</div><div class="cp-note"><span class="cp-note-bar"></span><span class="cp-note-q">“</span><span class="cp-note-t">Elevação lateral sentada no banco ou em pé.</span></div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=a618bc8a-c71c-4af7-aee9-cf91b020f3c6" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 1</a><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=0b5a56a4-45b8-409e-a8fb-95c0658e53d7" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 2</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">06.</span><div class="cp-exname">Elevação lateral e frontal com halter</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">3x10 a 12</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=803cbcd0-544f-4060-9ef9-b60aefacc0de" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">07.</span><div class="cp-exname">Desenvolvimento com halter</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">4x10 (descansa 10&#x27;&#x27;) + 10 ou o máximo que conseguir</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=8d29749a-e084-4e2f-a083-1eb09551f005" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">08.</span><div class="cp-exname">CIRCUITO DE ABS</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">Assista o vídeo</div><div class="cp-actions"><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=4413847c-3c77-458f-acb3-e7db2a213ad6" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">09.</span><div class="cp-exname">Cardio</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">Bike, escada ou caminhada pós treino
+No mínimo 30 minutos.</div><div class="cp-actions"><div class="cp-videos"><span class="cp-video-soon"><span class="cp-disc grad"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Vídeo em breve</span></div></div></div></div>
+<div style="padding:22px 4px 8px"><div class="cp-cat">Inferiores Completos</div><h2 class="cp-dayname">Sexta</h2></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">01.</span><div class="cp-exname">MOBILIDADE DE INFERIORES</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">Assista o vídeo</div><div class="cp-actions"><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=6d909c60-5370-4e63-af46-a8a2d8c52144" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">02.</span><div class="cp-exname">Cadeira Abdutora</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme"><span class="carga">CARGA LEVE</span> - 1x15 segurando 2&#x27;&#x27; com a perna aberta + 15 ou o máximo que conseguir direto
+<span class="carga">CARGA MEDIANA</span> - 1x12 segurando 2&#x27;&#x27; com a perna aberta + 12 ou o máximo que conseguir direto
+<span class="carga">CARGA PESADA</span> - 1x10 segurando 2&#x27;&#x27; com a perna aberta + 10 ou o máximo que conseguir direto</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=a8a0ae28-50d0-4565-a498-0a1e82e7adc5" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">03.</span><div class="cp-exname">Agachamento barra baixa</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme"><span class="carga">CARGA MODERADA</span> - 1x12 a 15
+<span class="carga">CARGA PESADA</span> - 2x8 a 10</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=5da872e4-4aa5-4390-be8c-747b3b842140" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">04.</span><div class="cp-exname">Extensão de quadril na polia ou com caneleira</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">1x15
+1x12
+2x10</div><div class="cp-note"><span class="cp-note-bar"></span><span class="cp-note-q">“</span><span class="cp-note-t">Subindo a carga em cada série.</span></div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=d8f3d810-b4e9-430e-baa9-457fefd9d9c7" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">05.</span><div class="cp-exname">Flexão de quadril na máquina ou com caneleira</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">4x10 + 10 parciais em cima</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 40&#x27;&#x27; a 1min</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=d265a9c6-51cc-4f30-9bea-71df6b080c3e" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">06.</span><div class="cp-exname">Cadeira Extensora unilateral + Passadas com carga ou sem</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">1x15 + 15 passadas
+1x12 + 12 passadas
+1x10 + 10 passadas</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=2a287e97-1a09-4714-85c4-3ec8d8b907ad" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 1</a><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=7f5724b4-0a3d-4965-af77-bb63fc4db303" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 2</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">07.</span><div class="cp-exname">Panturrilha no Leg 45</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">3x20 segurando 2&#x27;&#x27; em baixo com a panturrilha alongada</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 40&#x27;&#x27; a 1min</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=145c23db-1036-4a3d-ac5e-46882a5b63b7" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div style="padding:22px 4px 8px"><div class="cp-cat">Superiores Completos e Cardio</div><h2 class="cp-dayname">Sábado</h2></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">01.</span><div class="cp-exname">MOBILIDADE DE SUPERIORES</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">Assista o vídeo</div><div class="cp-actions"><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=a3743f64-fbbe-417e-8d5b-2e5ee2731972" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">02.</span><div class="cp-exname">Puxada com triângulo + Bíceps HBL</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme"><span class="carga">CARGA LEVE</span> - 1x15 + 8 a 10
+<span class="carga">CARGA MODERADA</span> - 1x12 + 8 a 10
+<span class="carga">CARGA PESADA</span> - 2x10 + 8 a 10</div><div class="cp-note"><span class="cp-note-bar"></span><span class="cp-note-q">“</span><span class="cp-note-t">A carga para fazer o bíceps mantém a mesma, só aumenta se sentir que está muito leve.</span></div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=b4b3f258-d5a1-42af-8043-fcce41b5d5cf" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 1</a><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=1dad1ea6-bdc6-4ee1-b396-6974b7e64222" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 2</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">03.</span><div class="cp-exname">Remada sentada aberta + Remada curvada pegada neutra com halter</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme"><span class="carga">CARGA LEVE</span> - 1x12 a 15 + máx próximo a falha da remada com halter
+<span class="carga">CARGA PESADA</span> - 1x8 a 10 + máx próximo a falha da remada com halter
+<span class="carga">CARGA LEVE</span> - 1x12 a 15 + máx próximo a falha da remada com halter
+<span class="carga">CARGA PESADA</span> - 1x8 a 10 + máx próximo a falha da remada com halter</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=da87f970-521f-4248-b87d-1637b7154d84" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 1</a><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=c47622d3-538f-4ae8-9d4d-5bb4c5bbe666" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 2</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">04.</span><div class="cp-exname">Bíceps unilateral na polia</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">3x6 a 8 ou o máximo que conseguir</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 40&#x27;&#x27; a 1min</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=f19ff542-06c8-4055-851d-f14a376322a9" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">05.</span><div class="cp-exname">Voador peitoral + Tríceps francês com halter</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">1x15 + 15
+1x12 + 12
+2x10 + 10</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 40&#x27;&#x27; a 1min</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=a931fcf8-e070-41d3-a161-698c3350d774" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 1</a><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=7d88ba15-0cca-49c7-94a9-10c8420644d7" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 2</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">06.</span><div class="cp-exname">Tríceps testa com halter + Elevação lateral com halter</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">4x10 a 12
++ 10 a 12</div><div class="cp-note"><span class="cp-note-bar"></span><span class="cp-note-q">“</span><span class="cp-note-t">Elevação lateral sentada no banco ou em pé.</span></div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=a618bc8a-c71c-4af7-aee9-cf91b020f3c6" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 1</a><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=0b5a56a4-45b8-409e-a8fb-95c0658e53d7" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo 2</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">07.</span><div class="cp-exname">Desenvolvimento com halter</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">4x10 (descansa 10&#x27;&#x27;) + 10 ou o máximo que conseguir</div><label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg"></label><div class="cp-actions"><span class="cp-rest-chip"><svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>Descanso 1 min a 1min30&#x27;&#x27;</span><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=8d29749a-e084-4e2f-a083-1eb09551f005" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">08.</span><div class="cp-exname">CIRCUITO DE ABS</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">Assista o vídeo</div><div class="cp-actions"><div class="cp-videos"><a class="cp-video-btn" style="text-decoration:none" href="https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=4413847c-3c77-458f-acb3-e7db2a213ad6" target="_blank" rel="noopener"><span class="cp-disc lite"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Ver vídeo</a></div></div></div></div>
+<div class="cp-card"><div class="cp-content"><div style="display:flex;align-items:flex-start;gap:10px"><span class="cp-num">09.</span><div class="cp-exname">Cardio</div><span class="cp-check"><span class="cp-circle"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></span></div><div class="cp-scheme">Bike, escada ou caminhada pós treino
+No mínimo 30 minutos.</div><div class="cp-actions"><div class="cp-videos"><span class="cp-video-soon"><span class="cp-disc grad"><svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg></span>Vídeo em breve</span></div></div></div></div>
+</div>
+</div>
+
+  <div id="cp-tabs"></div>
+
+  <div id="day-root" style="padding:4px 18px 0"></div>
+
+  <div style="padding:34px 22px 10px">
+    <div style="font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#B24E15;margin-bottom:6px">Cardio</div>
+    <div style="font-size:12.5px;color:#6E6288;font-weight:600;margin-bottom:18px">Quando encaixar o aeróbico, segundo o seu objetivo</div>
+    <div style="background:#FFFFFF;border:1px solid #E4DAF8;border-radius:18px;overflow:hidden;box-shadow:0 1px 2px rgba(33,24,51,.04),0 18px 42px -22px rgba(91,54,196,.28)">
+      <div style="height:3px;background:linear-gradient(90deg,#FFC9A3,#D8763F)"></div>
+      <div style="padding:18px">
+        <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:18px;color:#5B36C4;margin:0 0 8px">Hipertrofia</h3>
+        <p style="font-size:13.5px;color:#6E6288;line-height:1.65;margin:0 0 10px;font-weight:500">Se o seu foco é ganhar massa muscular, faça o cardio depois da musculação ou em outro horário do dia, com um intervalo de 4 a 6 horas.</p>
+        <p style="font-size:13.5px;color:#6E6288;line-height:1.65;margin:0 0 10px;font-weight:500">Assim, você preserva a energia para treinar com intensidade, usar boas cargas e gerar um melhor estímulo para a hipertrofia.</p>
+        <p style="font-size:13.5px;color:#6E6288;line-height:1.65;margin:0;font-weight:500">O ideal é fazer de 20 a 40 minutos, de 2 a 4 vezes por semana, em intensidade leve a moderada. Dessa forma, você cuida da saúde cardiovascular sem prejudicar os ganhos de massa muscular.</p>
+        <div style="display:flex;align-items:center;gap:10px;margin:16px 0"><span style="height:1px;flex:1;background:linear-gradient(90deg,transparent,#E4DAF8)"></span><span style="width:6px;height:6px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFC9A3,#D8763F)"></span><span style="height:1px;flex:1;background:linear-gradient(90deg,#E4DAF8,transparent)"></span></div>
+        <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:18px;color:#5B36C4;margin:0 0 8px">Emagrecimento</h3>
+        <p style="font-size:13.5px;color:#6E6288;line-height:1.65;margin:0 0 10px;font-weight:500">Se o seu objetivo é emagrecer, também prefira fazer o cardio depois da musculação.</p>
+        <p style="font-size:13.5px;color:#6E6288;line-height:1.65;margin:0 0 10px;font-weight:500">Treinar força primeiro ajuda a preservar a massa muscular durante o déficit calórico. Depois, o cardio complementa o gasto energético, favorecendo o processo de emagrecimento.</p>
+        <p style="font-size:13.5px;color:#6E6288;line-height:1.65;margin:0;font-weight:500">O ideal é fazer de 30 min à 1 hora de 3 a 6 vezes por semana, em intensidade moderada. Lembre-se: o principal fator para emagrecer continua sendo o déficit calórico.</p>
+        <div style="display:flex;align-items:center;gap:10px;margin:16px 0"><span style="height:1px;flex:1;background:linear-gradient(90deg,transparent,#E4DAF8)"></span><span style="width:6px;height:6px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFC9A3,#D8763F)"></span><span style="height:1px;flex:1;background:linear-gradient(90deg,#E4DAF8,transparent)"></span></div>
+        <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:18px;color:#5B36C4;margin:0 0 8px">Performance</h3>
+        <p style="font-size:13.5px;color:#6E6288;line-height:1.65;margin:0 0 10px;font-weight:500">Se o seu foco é melhorar a performance na corrida, ciclismo ou natação, dê prioridade aos treinos específicos da modalidade e siga o seu planejamento.</p>
+        <p style="font-size:13.5px;color:#6E6288;line-height:1.65;margin:0 0 10px;font-weight:500">Quando o treino for no mesmo dia da musculação, normalmente o ideal é fazer primeiro a modalidade ou separar os treinos por algumas horas.</p>
+        <p style="font-size:13.5px;color:#6E6288;line-height:1.65;margin:0;font-weight:500">Recomendação: a frequência e a duração variam de acordo com o planejamento e o objetivo de cada atleta.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:30px 20px 8px;color:#6E6288;font-size:12px;font-weight:600;letter-spacing:.02em">Feito com atenção pra você evoluir 💜</div>
+</div>
+
+<div id="rest-overlay" class="cp-overlay" role="dialog" aria-modal="true" aria-label="Cronômetro de descanso" hidden>
+  <div class="cp-rest-panel">
+    <div class="cp-rest-title">Descanso</div>
+    <div class="cp-ringwrap">
+      <svg viewBox="0 0 120 120">
+        <defs>
+          <linearGradient id="cpGradA" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7B52E1"></stop><stop offset="100%" stop-color="#A88BEF"></stop></linearGradient>
+          <linearGradient id="cpGradB" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7B52E1"></stop><stop offset="55%" stop-color="#FFC9A3"></stop><stop offset="100%" stop-color="#FF7A1A"></stop></linearGradient>
+        </defs>
+        <circle cx="60" cy="60" r="52" fill="none" stroke="#F0EAFB" stroke-width="8"></circle>
+        <circle id="rest-ring" cx="60" cy="60" r="52" stroke="url(#cpGradA)"></circle>
+      </svg>
+      <div id="rest-time" class="cp-time">0:00</div>
+      <div id="rest-photo" class="cp-photo" hidden><img src="data:image/jpeg;base64,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" alt="Natasha comemorando"><div class="cp-scrim"></div></div>
+    </div>
+    <div id="rest-phrase" class="cp-phrase" hidden>TEMPO DE DESCANSO NÃO É FÉRIAS. VOLTA LOGO PARA O TREINO, GAROTA!</div>
+    <button id="rest-add15" class="cp-add15">+15 segundos</button>
+    <div class="cp-rest-row">
+      <button id="rest-pause" class="cp-btn-solid">Pausar</button>
+      <button id="rest-skip" class="cp-btn-ghost">Pular</button>
+      <button id="rest-done" class="cp-btn-solid big" hidden>Concluir</button>
+    </div>
+  </div>
+</div>
+
+<div id="video-overlay" class="cp-overlay video" role="dialog" aria-modal="true" aria-label="Vídeo do exercício" hidden>
+  <div class="cp-video-box">
+    <div class="cp-video-close-row">
+      <button id="video-close" aria-label="Fechar vídeo"><svg viewBox="0 0 12 12" style="width:13px;height:13px"><path d="M2 2L10 10M10 2L2 10" stroke="#fff" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg></button>
+    </div>
+    <div class="cp-video-frame"><iframe id="video-frame" title="Vídeo do exercício" src="" allow="fullscreen" allowfullscreen></iframe></div>
+  </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+var __st=document.getElementById('cp-static'); if(__st&&__st.parentNode) __st.parentNode.removeChild(__st);
+
+
+/* ============ PERSONALIZAÇÃO (edite aqui) ============ */
+var CONFIG = {
+  nomeAluna: 'Patrícia Simas',
+  fase: 'Planilha 2',
+  whatsapp: '',  /* só dígitos, com DDI. ex: '5511999999999'. Vazio = sem link */
+  codigoAcesso: 'patricia'  /* código pedido na entrada do site. Vazio = sem tela de acesso */
+};
+/* ===================================================== */
+
+var STORAGE_KEY = 'treino-progresso-patricia-2';
+var RING_C = 326.73;
+var PANDA = 'https://player-vz-16ac2433-c49.tv.pandavideo.com.br/embed/?v=';
+/* ---------- tela de acesso exclusivo (só quando o JS roda, ou seja, no navegador) ---------- */
+(function(){
+  var code = (CONFIG.codigoAcesso || '').trim();
+  if (!code) return;
+  var AK = 'cp-acesso-' + STORAGE_KEY;
+  try { if (localStorage.getItem(AK) === 'ok') return; } catch(e) {}
+  function norm(s){ s = (s || '').toLowerCase(); try { s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); } catch(e) {} return s.replace(/\s+/g, ''); }
+  var ov = document.createElement('div');
+  ov.id = 'cp-gate';
+  ov.style.cssText = 'position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(70% 45% at 12% -2%, rgba(168,139,239,.22), transparent 60%),radial-gradient(62% 42% at 100% 8%, rgba(255,201,163,.24), transparent 58%),linear-gradient(180deg,#FDFBFF 0%,#F6F1FC 46%,#FBF4FB 100%)';
+  ov.innerHTML = '<div style="max-width:320px;width:100%;text-align:center;background:#FFFFFF;border:1px solid #E4DAF8;border-radius:22px;padding:30px 24px;box-shadow:0 1px 2px rgba(33,24,51,.04),0 18px 42px -22px rgba(91,54,196,.28)">'
+    + '<div style="font-size:10.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#6E6288;margin-bottom:10px">Treinadora Natasha Moraes</div>'
+    + '<div style="font-family:\'Fraunces\',serif;font-size:26px;font-weight:600;background:linear-gradient(105deg,#5B36C4 0%,#7B52E1 45%,#C750A0 90%);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px">Acesso exclusivo</div>'
+    + '<div style="font-size:13px;color:#6E6288;font-weight:600;line-height:1.5;margin-bottom:18px">Essa planilha é individual, feita só pra você. Digite seu código de acesso:</div>'
+    + '<input id="cp-gate-in" type="text" autocomplete="off" autocapitalize="none" placeholder="código de acesso" style="width:100%;box-sizing:border-box;font-size:16px;padding:13px 14px;border-radius:12px;border:1px solid #E4DAF8;background:#F6F1FC;text-align:center;outline:none;color:#211833">'
+    + '<div id="cp-gate-err" style="display:none;font-size:12px;color:#C2371B;font-weight:700;margin-top:10px">Código incorreto. Confere com a Natasha 💜</div>'
+    + '<button id="cp-gate-btn" style="width:100%;margin-top:14px;padding:14px;border:0;border-radius:999px;background:linear-gradient(135deg,#7B52E1,#C750A0);color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit">Entrar</button></div>';
+  document.body.appendChild(ov);
+  function go(){
+    if (norm(document.getElementById('cp-gate-in').value) === norm(code)) {
+      try { localStorage.setItem(AK, 'ok'); } catch(e) {}
+      ov.parentNode.removeChild(ov);
+    } else {
+      document.getElementById('cp-gate-err').style.display = 'block';
+    }
+  }
+  document.getElementById('cp-gate-btn').addEventListener('click', go);
+  document.getElementById('cp-gate-in').addEventListener('keydown', function(e){ if (e.key === 'Enter') go(); });
+})();
+
+
+var WORKOUT = [
+  { day:"Segunda", category:"Quadríceps, Posterior e Panturrilha", exercises:[
+    { name:"MOBILIDADE DE INFERIORES", scheme:"Assista o vídeo", note:"", rest:"—", noLoad:true, videos:["6d909c60-5370-4e63-af46-a8a2d8c52144"] },
+    { name:"Cadeira Extensora unilateral + Passadas com carga ou sem", scheme:"1x15 + 15 passadas\n1x12 + 12 passadas\n2x10 + 10 passadas", note:"", rest:"1 min a 1min30''", videos:["2a287e97-1a09-4714-85c4-3ec8d8b907ad","7f5724b4-0a3d-4965-af77-bb63fc4db303"] },
+    { name:"Leg 45", scheme:"CARGA LEVE - 1x15 + 15 parciais\nCARGA MODERADA - 1x12 + 12 parciais\nCARGA PESADA - 2x10 + 10 parciais", note:"", rest:"1 min a 1min30''", videos:["b6df13e9-4184-4fc5-88f9-5685b77d0c5e"] },
+    { name:"Agachamento barra baixa", scheme:"CARGA MODERADA - 1x12 a 15\nCARGA PESADA - 2x8 a 10", note:"", rest:"1 min a 1min30''", videos:["5da872e4-4aa5-4390-be8c-747b3b842140"] },
+    { name:"Cadeira adutora", scheme:"4x15 segurando 2'' com a perna aberta", note:"Alongando bem a parte interna da coxa, não deixe ficar encurtada.", rest:"40'' a 1min", videos:["321cfac5-8048-4a47-abdf-f13ef9846b44"] },
+    { name:"Cadeira Flexora", scheme:"CARGA LEVE - 1x12 a 15\nCARGA PESADA - 1x8 a 10\nCARGA LEVE - 1x12 a 15\nCARGA PESADA - 1x8 a 10\n1x DROP - 6 (diminui a carga) + 8 (diminui a carga) + 10", note:"", rest:"1 min a 1min30''", videos:["763deaea-d8b6-4234-b68f-53c79ebe9800"] },
+    { name:"Flexão de quadril na máquina ou com caneleira", scheme:"4x10 + 10 parciais em cima", note:"", rest:"40'' a 1min", videos:["d265a9c6-51cc-4f30-9bea-71df6b080c3e"] },
+    { name:"Panturrilha no Leg 45", scheme:"3x20 segurando 2'' em baixo com a panturrilha alongada", note:"", rest:"40'' a 1min", videos:["145c23db-1036-4a3d-ac5e-46882a5b63b7"] }
+  ]},
+  { day:"Terça", category:"Costas, Bíceps, ABS e Cardio", exercises:[
+    { name:"MOBILIDADE DE SUPERIORES", scheme:"Assista o vídeo", note:"", rest:"—", noLoad:true, videos:["a3743f64-fbbe-417e-8d5b-2e5ee2731972"] },
+    { name:"Puxada com triângulo + Bíceps HBL", scheme:"CARGA LEVE - 1x15 + 8 a 10\nCARGA MODERADA - 1x12 + 8 a 10\nCARGA PESADA - 2x10 + 8 a 10", note:"A carga para fazer o bíceps mantém a mesma, só aumenta se sentir que está muito leve.", rest:"1 min a 1min30''", videos:["b4b3f258-d5a1-42af-8043-fcce41b5d5cf","1dad1ea6-bdc6-4ee1-b396-6974b7e64222"] },
+    { name:"Pull down + Bíceps martelo", scheme:"3x6 (diminui a carga) + 12\nE faz 10 a 12 do bíceps", note:"", rest:"1 min a 1min30''", videos:["22d05b7d-af94-4443-b9fe-1406066deff1","2be13feb-ca80-4d33-9e50-1c304c77883e"] },
+    { name:"Remada sentada aberta + Remada curvada pegada neutra com halter", scheme:"CARGA LEVE - 1x12 a 15 + máx próximo a falha da remada com halter\nCARGA PESADA - 1x8 a 10 + máx próximo a falha da remada com halter\nCARGA LEVE - 1x12 a 15 + máx próximo a falha da remada com halter\nCARGA PESADA - 1x8 a 10 + máx próximo a falha da remada com halter", note:"", rest:"1 min a 1min30''", videos:["da87f970-521f-4248-b87d-1637b7154d84","c47622d3-538f-4ae8-9d4d-5bb4c5bbe666"] },
+    { name:"Serrote na polia", scheme:"3x10 a 12", note:"", rest:"40'' a 1min", videos:["b260e416-b8e5-4b4e-b30b-12bb5ad43c06"] },
+    { name:"Bíceps unilateral na polia", scheme:"3x6 a 8 ou o máximo que conseguir", note:"", rest:"40'' a 1min", videos:["f19ff542-06c8-4055-851d-f14a376322a9"] },
+    { name:"CIRCUITO DE ABS DIÁSTASE", scheme:"Assista o vídeo", note:"", rest:"—", noLoad:true, videos:["0ef3f53e-4a70-4bf2-b711-ae215d224728"] },
+    { name:"Cardio", scheme:"Bike, escada ou caminhada pós treino\nNo mínimo 30 minutos.", note:"", rest:"—", noLoad:true, videos:[""] }
+  ]},
+  { day:"Quarta", category:"Glúteo e Posterior", exercises:[
+    { name:"MOBILIDADE DE INFERIORES", scheme:"Assista o vídeo", note:"", rest:"—", noLoad:true, videos:["6d909c60-5370-4e63-af46-a8a2d8c52144"] },
+    { name:"Cadeira Abdutora", scheme:"CARGA LEVE - 1x15 segurando 2'' com a perna aberta + 15 ou o máximo que conseguir direto\nCARGA MEDIANA - 1x12 segurando 2'' com a perna aberta + 12 ou o máximo que conseguir direto\nCARGA PESADA - 2x10 segurando 2'' com a perna aberta + 10 ou o máximo que conseguir direto", note:"", rest:"1 min a 1min30''", videos:["a8a0ae28-50d0-4565-a498-0a1e82e7adc5"] },
+    { name:"Búlgaro com halter", scheme:"3x10 a 12\n1x10 + 10 sem carga", note:"Subindo a carga sempre que sentir que está leve.", rest:"1 min a 1min30''", videos:["c5fb08de-0312-49eb-8ed2-1eaf6288db1c"] },
+    { name:"RDL com a barra", scheme:"CARGA MEDIANA - 2x10 a 12\nCARGA PESADA - 1x6 a 8", note:"", rest:"1 min a 1min30''", videos:["92a797fc-3475-4109-8e19-6370fdb696aa"] },
+    { name:"Extensão de quadril na polia ou com caneleira", scheme:"1x15\n1x12\n2x10", note:"Subindo a carga em cada série.", rest:"1 min a 1min30''", videos:["d8f3d810-b4e9-430e-baa9-457fefd9d9c7"] },
+    { name:"Mesa flexora", scheme:"3x6 (diminui a carga) + 12", note:"", rest:"1 min a 1min30''", videos:["97a4298b-32e0-4b62-9471-57f6d363accd"] },
+    { name:"Flexão de quadril na máquina ou com caneleira", scheme:"3x10 + 10 parciais em cima", note:"", rest:"40'' a 1min", videos:["d265a9c6-51cc-4f30-9bea-71df6b080c3e"] }
+  ]},
+  { day:"Quinta", category:"Peito, Tríceps, Ombro e Cardio", exercises:[
+    { name:"MOBILIDADE DE SUPERIORES", scheme:"Assista o vídeo", note:"", rest:"—", noLoad:true, videos:["a3743f64-fbbe-417e-8d5b-2e5ee2731972"] },
+    { name:"Voador peitoral + Tríceps francês com halter", scheme:"1x15 + 15\n1x12 + 12\n2x10 + 10", note:"", rest:"40'' a 1min", videos:["a931fcf8-e070-41d3-a161-698c3350d774","7d88ba15-0cca-49c7-94a9-10c8420644d7"] },
+    { name:"Supino reto com a barra + Supino neutro com halter", scheme:"3x10 + 10", note:"", rest:"40'' a 1min", videos:["8fab046d-0a76-40c5-8271-42aedccb1aab","48dc984b-cb2e-4e52-9d12-724c933fde65"] },
+    { name:"Tríceps corda", scheme:"3x6 (diminui a carga) + 6 (diminui a carga) + 6", note:"", rest:"40'' a 1min", videos:["a2fd5542-9e35-4e63-9bc7-0818cf53ac54"] },
+    { name:"Tríceps testa com halter + Elevação lateral com halter", scheme:"4x10 a 12\n+ 10 a 12", note:"Elevação lateral sentada no banco ou em pé.", rest:"1 min a 1min30''", videos:["a618bc8a-c71c-4af7-aee9-cf91b020f3c6","0b5a56a4-45b8-409e-a8fb-95c0658e53d7"] },
+    { name:"Elevação lateral e frontal com halter", scheme:"3x10 a 12", note:"", rest:"1 min a 1min30''", videos:["803cbcd0-544f-4060-9ef9-b60aefacc0de"] },
+    { name:"Desenvolvimento com halter", scheme:"4x10 (descansa 10'') + 10 ou o máximo que conseguir", note:"", rest:"1 min a 1min30''", videos:["8d29749a-e084-4e2f-a083-1eb09551f005"] },
+    { name:"CIRCUITO DE ABS", scheme:"Assista o vídeo", note:"", rest:"—", noLoad:true, videos:["4413847c-3c77-458f-acb3-e7db2a213ad6"] },
+    { name:"Cardio", scheme:"Bike, escada ou caminhada pós treino\nNo mínimo 30 minutos.", note:"", rest:"—", noLoad:true, videos:[""] }
+  ]},
+  { day:"Sexta", category:"Inferiores Completos", exercises:[
+    { name:"MOBILIDADE DE INFERIORES", scheme:"Assista o vídeo", note:"", rest:"—", noLoad:true, videos:["6d909c60-5370-4e63-af46-a8a2d8c52144"] },
+    { name:"Cadeira Abdutora", scheme:"CARGA LEVE - 1x15 segurando 2'' com a perna aberta + 15 ou o máximo que conseguir direto\nCARGA MEDIANA - 1x12 segurando 2'' com a perna aberta + 12 ou o máximo que conseguir direto\nCARGA PESADA - 1x10 segurando 2'' com a perna aberta + 10 ou o máximo que conseguir direto", note:"", rest:"1 min a 1min30''", videos:["a8a0ae28-50d0-4565-a498-0a1e82e7adc5"] },
+    { name:"Agachamento barra baixa", scheme:"CARGA MODERADA - 1x12 a 15\nCARGA PESADA - 2x8 a 10", note:"", rest:"1 min a 1min30''", videos:["5da872e4-4aa5-4390-be8c-747b3b842140"] },
+    { name:"Extensão de quadril na polia ou com caneleira", scheme:"1x15\n1x12\n2x10", note:"Subindo a carga em cada série.", rest:"1 min a 1min30''", videos:["d8f3d810-b4e9-430e-baa9-457fefd9d9c7"] },
+    { name:"Flexão de quadril na máquina ou com caneleira", scheme:"4x10 + 10 parciais em cima", note:"", rest:"40'' a 1min", videos:["d265a9c6-51cc-4f30-9bea-71df6b080c3e"] },
+    { name:"Cadeira Extensora unilateral + Passadas com carga ou sem", scheme:"1x15 + 15 passadas\n1x12 + 12 passadas\n1x10 + 10 passadas", note:"", rest:"1 min a 1min30''", videos:["2a287e97-1a09-4714-85c4-3ec8d8b907ad","7f5724b4-0a3d-4965-af77-bb63fc4db303"] },
+    { name:"Panturrilha no Leg 45", scheme:"3x20 segurando 2'' em baixo com a panturrilha alongada", note:"", rest:"40'' a 1min", videos:["145c23db-1036-4a3d-ac5e-46882a5b63b7"] }
+  ]},
+  { day:"Sábado", category:"Superiores Completos e Cardio", exercises:[
+    { name:"MOBILIDADE DE SUPERIORES", scheme:"Assista o vídeo", note:"", rest:"—", noLoad:true, videos:["a3743f64-fbbe-417e-8d5b-2e5ee2731972"] },
+    { name:"Puxada com triângulo + Bíceps HBL", scheme:"CARGA LEVE - 1x15 + 8 a 10\nCARGA MODERADA - 1x12 + 8 a 10\nCARGA PESADA - 2x10 + 8 a 10", note:"A carga para fazer o bíceps mantém a mesma, só aumenta se sentir que está muito leve.", rest:"1 min a 1min30''", videos:["b4b3f258-d5a1-42af-8043-fcce41b5d5cf","1dad1ea6-bdc6-4ee1-b396-6974b7e64222"] },
+    { name:"Remada sentada aberta + Remada curvada pegada neutra com halter", scheme:"CARGA LEVE - 1x12 a 15 + máx próximo a falha da remada com halter\nCARGA PESADA - 1x8 a 10 + máx próximo a falha da remada com halter\nCARGA LEVE - 1x12 a 15 + máx próximo a falha da remada com halter\nCARGA PESADA - 1x8 a 10 + máx próximo a falha da remada com halter", note:"", rest:"1 min a 1min30''", videos:["da87f970-521f-4248-b87d-1637b7154d84","c47622d3-538f-4ae8-9d4d-5bb4c5bbe666"] },
+    { name:"Bíceps unilateral na polia", scheme:"3x6 a 8 ou o máximo que conseguir", note:"", rest:"40'' a 1min", videos:["f19ff542-06c8-4055-851d-f14a376322a9"] },
+    { name:"Voador peitoral + Tríceps francês com halter", scheme:"1x15 + 15\n1x12 + 12\n2x10 + 10", note:"", rest:"40'' a 1min", videos:["a931fcf8-e070-41d3-a161-698c3350d774","7d88ba15-0cca-49c7-94a9-10c8420644d7"] },
+    { name:"Tríceps testa com halter + Elevação lateral com halter", scheme:"4x10 a 12\n+ 10 a 12", note:"Elevação lateral sentada no banco ou em pé.", rest:"1 min a 1min30''", videos:["a618bc8a-c71c-4af7-aee9-cf91b020f3c6","0b5a56a4-45b8-409e-a8fb-95c0658e53d7"] },
+    { name:"Desenvolvimento com halter", scheme:"4x10 (descansa 10'') + 10 ou o máximo que conseguir", note:"", rest:"1 min a 1min30''", videos:["8d29749a-e084-4e2f-a083-1eb09551f005"] },
+    { name:"CIRCUITO DE ABS", scheme:"Assista o vídeo", note:"", rest:"—", noLoad:true, videos:["4413847c-3c77-458f-acb3-e7db2a213ad6"] },
+    { name:"Cardio", scheme:"Bike, escada ou caminhada pós treino\nNo mínimo 30 minutos.", note:"", rest:"—", noLoad:true, videos:[""] }
+  ]}
+];
+
+/* videos ficam inline em cada exercicio; aqui so completa os slots vazios */
+(function(){
+  WORKOUT.forEach(function(d){ d.exercises.forEach(function(ex){
+    var n = ex.name.split(' + ').length;
+    ex.videos = ex.videos || [];
+    while (ex.videos.length < n) ex.videos.push("");
+  }); });
+})();
+
+/* ---------- estado + persistência ---------- */
+function mondayKey(d){
+  d = new Date(d);
+  var off = (d.getDay() + 6) % 7;
+  d.setHours(0,0,0,0); d.setDate(d.getDate() - off);
+  return d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
+}
+var progress = {};
+try { progress = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e) {}
+function saveP(){ try { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); } catch(e) {} }
+(function(){
+  var wk = mondayKey(new Date());
+  if (progress.__week !== wk) {
+    Object.keys(progress).forEach(function(k){
+      if (k.indexOf('__') === 0) return;
+      var e = progress[k]; if (!e) return;
+      if (e.load) e.lastLoad = e.load;
+      e.load = ''; e.done = false;
+    });
+    progress.__week = wk;
+    saveP();
+  }
+})();
+
+var dayMap = {1:0, 2:1, 3:2, 4:3, 5:4, 6:5, 0:0};
+var day = dayMap[new Date().getDay()];
+var confirmClear = false, clearTO = null;
+var rest = null, restInt = null;
+var audioCtx = null, wakeLock = null;
+
+/* ---------- helpers ---------- */
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function cap(s){ return (s || '').replace(/^(\s*)(\p{L})/u, function(m, sp, ch){ return sp + ch.toUpperCase(); }); }
+function capLines(s){ return (s || '').split('\n').map(cap).join('\n'); }
+function schemeHTML(s){
+  var e = esc(capLines(s));
+  return e.replace(/CARGA (LEVE|MODERADA|MEDIANA|PESADA)/g, '<span class="carga">CARGA $1</span>');
+}
+function restToSec(r){
+  if (!r || r === '—') return 0;
+  var lo = r.split(/á|a\b/i)[0];
+  var sec = 0, m;
+  if (m = lo.match(/(\d+)\s*min/i)) sec += parseInt(m[1],10)*60;
+  if (m = lo.match(/(\d+)\s*''/)) sec += parseInt(m[1],10);
+  if (!sec && (m = lo.match(/(\d+)\s*s/i))) sec += parseInt(m[1],10);
+  return sec;
+}
+function fmt(sec){ var m = Math.floor(sec/60); return m + ':' + String(sec % 60).padStart(2,'0'); }
+function dayDone(di){
+  return WORKOUT[di].exercises.filter(function(ex,i){ var e = progress[di+'-'+i]; return e && e.done; }).length;
+}
+function sweep(el){
+  if (!el) return;
+  var s = document.createElement('div'); s.className = 'cp-sweep';
+  el.appendChild(s); setTimeout(function(){ s.remove(); }, 800);
+}
+function lockScroll(on){ document.body.style.overflow = on ? 'hidden' : ''; }
+
+/* ---------- hero ---------- */
+(function(){
+  var nome = (CONFIG.nomeAluna || '').trim();
+  var fase = (CONFIG.fase || '').trim();
+  document.getElementById('cp-greet').textContent =
+    nome ? (fase ? fase + ' · feita pra ' + nome : 'Feita pra ' + nome) : fase;
+  var wa = (CONFIG.whatsapp || '').replace(/\D/g, '');
+  if (wa) {
+    var slot = document.getElementById('cp-wa');
+    var a = document.createElement('a');
+    a.href = 'https://wa.me/' + wa; a.target = '_blank'; a.rel = 'noopener';
+    a.style.fontWeight = '500'; a.textContent = 'me chame no WhatsApp';
+    slot.textContent = ''; slot.appendChild(a);
+  }
+})();
+
+/* ---------- abas ---------- */
+var view = 'day';
+var tabsEl = document.getElementById('cp-tabs');
+tabsEl.innerHTML = WORKOUT.map(function(d,i){
+  return '<button id="cp-tab-'+i+'" class="cp-tab" data-day="'+i+'">'+esc(d.day)+'<span class="cp-tab-pearl" hidden></span></button>';
+}).join('');
+tabsEl.addEventListener('click', function(e){
+  var b = e.target.closest('.cp-tab');
+  if (!b) return;
+  selectDay(parseInt(b.dataset.day,10));
+});
+function updateTabs(){
+  WORKOUT.forEach(function(d,i){
+    var b = document.getElementById('cp-tab-'+i);
+    b.classList.toggle('active', view === 'day' && i === day);
+    b.querySelector('.cp-tab-pearl').hidden = dayDone(i) !== d.exercises.length;
+  });
+}
+function scrollTab(i, smooth){
+  var t = document.getElementById('cp-tab-'+i);
+  if (t) tabsEl.scrollTo({ left: t.offsetLeft - (tabsEl.clientWidth - t.offsetWidth)/2, behavior: smooth === false ? 'auto' : 'smooth' });
+}
+function selectDay(i){
+  view = 'day'; day = i; confirmClear = false; clearTimeout(clearTO);
+  renderDay(); updateTabs(); scrollTab(i);
+}
+
+/* ---------- treino do dia ---------- */
+var dayRoot = document.getElementById('day-root');
+var PLAY = '<svg viewBox="0 0 10 10" style="width:9px;height:9px"><path d="M2 1L8 5L2 9V1Z" fill="#fff"></path></svg>';
+var CLOCK = '<svg viewBox="0 0 14 14" style="width:12px;height:12px;fill:none;flex:none"><circle cx="7" cy="8" r="5" stroke="#B24E15" stroke-width="1.4" fill="none"></circle><path d="M7 5.5V8L8.5 9" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path><path d="M5.5 1.5h3" stroke="#B24E15" stroke-width="1.4" stroke-linecap="round"></path></svg>';
+
+function cardHTML(ex, ei){
+  var key = day + '-' + ei;
+  var st = progress[key] || {};
+  var isDone = !!st.done;
+  var restSec = restToSec(ex.rest);
+  var parts = ex.name.split(' + ');
+  var multi = parts.length > 1;
+  var links = ex.videos || [];
+  var vids = (multi ? parts : ['']).map(function(p, vi){ return (links[vi] || '').trim(); });
+
+  var h = '<div class="cp-card" id="cp-card-'+key+'">';
+  if (isDone) h += '<span class="cp-card-top"></span>';
+  h += '<div class="cp-content'+(isDone?' off':'')+'">';
+  h += '<div style="display:flex;align-items:flex-start;gap:10px">';
+  h += '<span class="cp-num">'+String(ei+1).padStart(2,'0')+'.</span>';
+  h += '<div class="cp-exname">'+esc(ex.name)+'</div>';
+  h += '<button class="cp-check" data-key="'+key+'" aria-label="Marcar exercício feito" id="cp-check-'+key+'"><span class="cp-circle'+(isDone?' on':'')+'"><svg viewBox="0 0 14 14"><path d="M2 7L5.5 10.5L12 3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span></button>';
+  h += '</div>';
+  if (ex.scheme) h += '<div class="cp-scheme">'+schemeHTML(ex.scheme)+'</div>';
+  if (ex.note) h += '<div class="cp-note"><span class="cp-note-bar"></span><span class="cp-note-q">“</span><span class="cp-note-t">'+esc(ex.note)+'</span></div>';
+  if (!ex.noLoad) {
+    h += '<label class="cp-loadwrap"><span class="cp-loadtag">Carga usada</span><input class="cp-load" type="text" inputmode="decimal" placeholder="ex: 20kg" data-key="'+key+'" value="'+esc(st.load||'')+'"></label>';
+    if (st.lastLoad) h += '<div class="cp-last">Da última vez foi <b>'+esc(st.lastLoad)+'</b>. <i>Hoje você passa.</i></div>';
+  }
+  h += '<div class="cp-actions">';
+  if (restSec > 0) h += '<div><button class="cp-rest-chip" data-sec="'+restSec+'">'+CLOCK+'Descanso '+esc(ex.rest)+'</button></div>';
+  h += '<div class="cp-videos">';
+  vids.forEach(function(link, vi){
+    var label = multi ? 'Ver vídeo '+(vi+1) : 'Ver vídeo';
+    if (link) h += '<button class="cp-video-btn" data-link="'+esc(link)+'"><span class="cp-disc lite">'+PLAY+'</span>'+label+'</button>';
+    else h += '<span class="cp-video-soon"><span class="cp-disc grad">'+PLAY+'</span>Vídeo em breve</span>';
+  });
+  h += '</div></div></div></div>';
+  return h;
+}
+
+function renderDay(){
+  var d = WORKOUT[day];
+  var total = d.exercises.length;
+  var done = dayDone(day);
+  var pct = total ? Math.round(done/total*100) : 0;
+  var h = '<div style="padding:16px 4px 8px">'
+    + '<div class="cp-cat">'+esc(d.category)+'</div>'
+    + '<h2 class="cp-dayname">'+esc(d.day)+'</h2>'
+    + '<div style="display:flex;align-items:center;gap:12px">'
+    + '<div class="cp-track"><div class="cp-fill'+(pct===100?' full':'')+'" style="width:'+pct+'%">'+(pct>0?'<span class="cp-tip"></span>':'')+'</div></div>'
+    + '<div class="cp-count">'+done+'/'+total+'</div>'
+    + '<button class="cp-clear'+(confirmClear?' warn':'')+'" id="cp-clear">'+(confirmClear?'confirmar?':'limpar')+'</button>'
+    + '</div>'
+    + (done === total ? '<div class="cp-impec">Dia impecável. Você brilhou — amanhã tem mais.</div>' : '')
+    + '</div>';
+  h += d.exercises.map(function(ex,ei){ return cardHTML(ex,ei); }).join('');
+  dayRoot.innerHTML = h;
+}
+
+dayRoot.addEventListener('click', function(e){
+  var chk = e.target.closest('.cp-check');
+  if (chk) { toggleDone(chk.dataset.key); return; }
+  var rst = e.target.closest('.cp-rest-chip');
+  if (rst) { openRest(parseInt(rst.dataset.sec,10)); return; }
+  var vid = e.target.closest('.cp-video-btn');
+  if (vid) { openVideo(vid.dataset.link); return; }
+  if (e.target.closest('#cp-clear')) clearDay();
+});
+dayRoot.addEventListener('input', function(e){
+  if (e.target.classList && e.target.classList.contains('cp-load')) {
+    var key = e.target.dataset.key;
+    var cur = progress[key] || { done:false, load:'' };
+    cur.load = e.target.value; progress[key] = cur;
+    saveP();
+  }
+});
+
+function toggleDone(key){
+  var di = day;
+  var wasFull = dayDone(di) === WORKOUT[di].exercises.length;
+  var cur = progress[key] || { done:false, load:'' };
+  cur.done = !cur.done; progress[key] = cur;
+  saveP();
+  renderDay(); updateTabs();
+  if (!cur.done) return;
+  sweep(document.getElementById('cp-card-'+key));
+  var chk = document.getElementById('cp-check-'+key);
+  if (chk) {
+    var st = document.createElement('span'); st.className = 'cp-star'; st.textContent = '✦';
+    chk.appendChild(st); setTimeout(function(){ st.remove(); }, 500);
+  }
+  if (!wasFull && dayDone(di) === WORKOUT[di].exercises.length) {
+    setTimeout(function(){ sweep(document.getElementById('cp-tab-'+di)); }, 250);
+  }
+}
+
+function clearDay(){
+  if (!confirmClear) {
+    confirmClear = true;
+    clearTimeout(clearTO);
+    clearTO = setTimeout(function(){ confirmClear = false; renderDay(); }, 3500);
+    renderDay();
+    return;
+  }
+  clearTimeout(clearTO); confirmClear = false;
+  WORKOUT[day].exercises.forEach(function(ex,ei){
+    var k = day+'-'+ei;
+    if (progress[k]) progress[k].done = false;
+  });
+  saveP(); renderDay(); updateTabs();
+}
+
+/* ---------- cronômetro (ancorado em Date.now, sobrevive à tela bloqueada) ---------- */
+var restOverlay = document.getElementById('rest-overlay');
+var restRing = document.getElementById('rest-ring');
+var restTime = document.getElementById('rest-time');
+var restPhoto = document.getElementById('rest-photo');
+var restPhrase = document.getElementById('rest-phrase');
+var restPause = document.getElementById('rest-pause');
+var restSkip = document.getElementById('rest-skip');
+var restDone = document.getElementById('rest-done');
+
+function openRest(sec){
+  if (!sec) return;
+  unlockAudio();
+  requestWake();
+  clearInterval(restInt);
+  restInt = setInterval(tick, 250);
+  rest = { total:sec, deadline: Date.now() + sec*1000, paused:false, pausedLeft:0, finished:false };
+  restOverlay.hidden = false;
+  lockScroll(true);
+  updateRest();
+}
+function tick(){
+  if (!rest) return;
+  if (!rest.paused && !rest.finished && Date.now() >= rest.deadline) { finishRest(); return; }
+  updateRest();
+}
+function finishRest(){
+  if (!rest || rest.finished) return;
+  rest.finished = true;
+  updateRest();
+  restPhoto.classList.remove('cp-pulse'); void restPhoto.offsetWidth; restPhoto.classList.add('cp-pulse');
+  try { if (navigator.vibrate) navigator.vibrate([300,120,300,120,400]); } catch(e) {}
+  playAlarm();
+}
+function togglePause(){
+  if (!rest || rest.finished) return;
+  if (rest.paused) { rest.paused = false; rest.deadline = Date.now() + rest.pausedLeft; }
+  else { rest.paused = true; rest.pausedLeft = Math.max(0, rest.deadline - Date.now()); }
+  updateRest();
+}
+function add15(){
+  if (!rest) return;
+  unlockAudio();
+  if (rest.finished) rest = { total: rest.total + 15, deadline: Date.now() + 15000, paused:false, pausedLeft:0, finished:false };
+  else if (rest.paused) { rest.total += 15; rest.pausedLeft += 15000; }
+  else { rest.total += 15; rest.deadline += 15000; }
+  updateRest();
+}
+function closeRest(){
+  clearInterval(restInt); restInt = null;
+  releaseWake();
+  rest = null;
+  restOverlay.hidden = true;
+  lockScroll(false);
+}
+function updateRest(){
+  if (!rest) return;
+  var leftMs = rest.finished ? 0 : (rest.paused ? rest.pausedLeft : Math.max(0, rest.deadline - Date.now()));
+  var leftSec = Math.ceil(leftMs/1000);
+  var frac = rest.total ? Math.min(1, leftSec/rest.total) : 0;
+  restTime.textContent = fmt(leftSec);
+  restRing.setAttribute('stroke', rest.finished ? 'url(#cpGradB)' : 'url(#cpGradA)');
+  restRing.style.strokeDashoffset = rest.finished ? 0 : RING_C * (1 - frac);
+  restTime.hidden = rest.finished;
+  restPhoto.hidden = !rest.finished;
+  restPhrase.hidden = !rest.finished;
+  restPause.hidden = rest.finished;
+  restSkip.hidden = rest.finished;
+  restDone.hidden = !rest.finished;
+  restPause.textContent = rest.paused ? 'Retomar' : 'Pausar';
+}
+restOverlay.addEventListener('click', function(e){ if (e.target === restOverlay) closeRest(); });
+restPause.addEventListener('click', togglePause);
+restSkip.addEventListener('click', closeRest);
+restDone.addEventListener('click', closeRest);
+document.getElementById('rest-add15').addEventListener('click', add15);
+
+document.addEventListener('visibilitychange', function(){
+  if (document.visibilityState !== 'visible') return;
+  if (!rest) return;
+  requestWake();
+  if (!rest.paused && !rest.finished && Date.now() >= rest.deadline) finishRest();
+  else updateRest();
+});
+
+function requestWake(){
+  try { if (navigator.wakeLock) navigator.wakeLock.request('screen').then(function(l){ wakeLock = l; }).catch(function(){}); } catch(e) {}
+}
+function releaseWake(){
+  try { if (wakeLock) { wakeLock.release(); wakeLock = null; } } catch(e) {}
+}
+
+/* ---------- áudio (arpejo "Power") ---------- */
+function unlockAudio(){
+  try {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+  } catch(e) {}
+}
+function playTone(freq, start, dur, peak){
+  try {
+    var o = audioCtx.createOscillator(), g = audioCtx.createGain();
+    o.connect(g); g.connect(audioCtx.destination);
+    o.type = 'square'; o.frequency.value = freq;
+    g.gain.setValueAtTime(0.0001, start);
+    g.gain.exponentialRampToValueAtTime(peak, start + 0.03);
+    g.gain.exponentialRampToValueAtTime(0.0001, start + dur);
+    o.start(start); o.stop(start + dur + 0.03);
+  } catch(e) {}
+}
+function playAlarm(){
+  try {
+    if (!audioCtx) return;
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    var t = audioCtx.currentTime;
+    playTone(1046.50, t + 0.00, 0.12, 0.20);
+    playTone(1318.51, t + 0.10, 0.12, 0.20);
+    playTone(1567.98, t + 0.20, 0.12, 0.20);
+    playTone(2093.00, t + 0.30, 0.35, 0.22);
+    playTone(1567.98, t + 0.72, 0.12, 0.18);
+    playTone(2093.00, t + 0.85, 0.45, 0.22);
+  } catch(e) {}
+}
+
+/* ---------- vídeo ---------- */
+var videoOverlay = document.getElementById('video-overlay');
+var videoFrame = document.getElementById('video-frame');
+function openVideo(link){
+  if (!link || !link.trim()) return;
+  videoFrame.src = link.indexOf('http') !== -1 ? link : PANDA + link.trim();
+  videoOverlay.hidden = false;
+  lockScroll(true);
+}
+function closeVideo(){
+  videoOverlay.hidden = true;
+  videoFrame.src = 'about:blank';
+  lockScroll(false);
+}
+videoOverlay.addEventListener('click', function(e){ if (e.target === videoOverlay) closeVideo(); });
+document.getElementById('video-close').addEventListener('click', closeVideo);
+
+/* ---------- init ---------- */
+renderDay();
+updateTabs();
+scrollTab(day, false);
+})();
+</script>
+</body>
+</html>
